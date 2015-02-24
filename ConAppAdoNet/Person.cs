@@ -12,21 +12,31 @@ namespace ConAppAdoNet
 	class Person
 	{
 		/// <summary>
-		/// Read only members for Name and Age of the personv
+		/// Read-only members for Name and Age of the personv
 		/// </summary>
 		private readonly string _name;
 		private readonly int _age;
 
+		/// <summary>
+		/// Read-only property for the Name of the person
+		/// </summary>
 		public string Name
 		{
 			get {return _name;}
 		}
 
+		/// <summary>
+		/// Read-only property for the Age of the person
+		/// </summary>
 		public int Age
 		{
 			get { return _age; }
 		}
 
+		/// <summary>
+		/// Available Cash in the wallet for this person, it can very during
+		/// the lifetime of the object of this type
+		/// </summary>
 		public int Cash
 		{
 			get;
@@ -51,6 +61,11 @@ namespace ConAppAdoNet
 			return String.Format("{0} is {1} years old and has {2} money available", Name, Age, Cash);
 		}
 
+		/// <summary>
+		/// Give cash from my wallet
+		/// </summary>
+		/// <param name="amount">The amount of cash to give</param>
+		/// <returns>The amount of cash I gave, or 0 if I don't have enough cash</returns>
 		public int GiveCash(int amount)
 		{
 			if (amount <= Cash && amount > 0)
